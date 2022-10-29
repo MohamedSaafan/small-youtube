@@ -1,0 +1,62 @@
+.video {
+  display: flex;
+  padding-top: 1rem;
+  overflow: hidden;
+  &__image {
+    min-width: 16rem;
+    position: relative;
+    margin-right: 1rem;
+
+    img {
+      width: 100%;
+      max-width: 16rem;
+      object-fit: contain;
+    }
+
+    &__duration {
+      position: absolute;
+      right: 0.5rem;
+      bottom: 0.7rem;
+      background-color: #313d0f;
+      color: #fff;
+      padding: 0.1rem 0.25rem;
+      border-radius: 3px;
+      font-size: 0.9rem;
+    }
+  }
+
+  &__details {
+  }
+
+  &__heading {
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+  }
+
+  &__statistics {
+    display: flex;
+    font-size: 0.9rem;
+    color: var(--color-gray-800);
+  }
+
+  &__description {
+    text-overflow: ellipsis;
+    width: 100%;
+    margin-top: 1rem;
+    display: inline-block;
+  }
+
+  &__options {
+    display: flex;
+    margin-top: 1rem;
+    &__option {
+      background-color: var(--color-gray-800);
+      color: #fff;
+      padding: 0.1rem 0.25rem;
+      font-size: 0.9rem;
+      height: 1.3rem;
+      border-radius: 3px;
+      margin-right: 0.5rem;
+    }
+  }
+}

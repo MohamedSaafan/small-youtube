@@ -8,8 +8,6 @@ export const buildSearchURL = (keyWord: string) => {
   return fetchURL;
 };
 
-export const buildGetVideosUrl = (videoId: string | string[]) => {
-  if (typeof videoId === "string")
-    return `${baseUrl}/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${YOUTUBE_API_KEY}`;
-  return `${baseUrl}/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId.toString()}&key=${YOUTUBE_API_KEY}`;
+export const buildGetVideosUrl = (videosId: string) => {
+  return `${baseUrl}/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videosId}&key=${YOUTUBE_API_KEY}`;
 };

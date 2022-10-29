@@ -3,12 +3,36 @@
   padding: 0;
   box-sizing: border-box;
 }
-.container {
-  width: 80%;
-  margin: auto;
-}
+
 :root {
   --color-gray-200: #dedede;
   --color-gray-500: #f8f8f8;
   --color-gray-800: #989898;
+}
+
+.container {
+  width: 80vw;
+  margin: auto;
+}
+.outer-container {
+  width: 90vw;
+  margin: auto;
+}
+.outer-container.searchlist-container {
+  background-color: var(--color-gray-500);
+}
+.withdot {
+  position: relative;
+  margin-right: 1rem;
+}
+.withdot::after {
+  position: absolute;
+  top: 50%;
+  right: -0.5rem;
+  transform: translateY(-50%);
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--color-gray-800);
 }

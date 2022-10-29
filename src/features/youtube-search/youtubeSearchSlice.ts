@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { api } from "../../api";
-import { buildSearchURL } from "../../api/urlBuilder";
+import { buildGetVideosUrl, buildSearchURL } from "../../api/urlBuilder";
+import { getVideoDetails } from "../videos/videosSlice";
 interface searchState {
   data: null | YoutubeSearchResult;
   loading: "idle" | "pending" | "succeeded" | "failed";
@@ -14,12 +15,21 @@ const initialState: searchState = {
 };
 
 export const searchInYoutube = createAsyncThunk(
-  "youtubeSearchResylts/searchInYoutube",
+  "youtubeSearch/searchInYoutube",
   async (searchKeyWord: string, thunkApi) => {
     // build the Url
     const url = buildSearchURL(searchKeyWord);
     try {
       const data = await api<YoutubeSearchResult>(url);
+      // extract videos ID's and get their details
+      const videoIDs: string[] = [];
+      data.items.forEach((item) => {
+        if (item.id.kind === "youtube#video") {
+          videoIDs.push(item.id.videoId);
+        }
+      });
+      // dispatch getVideos Details
+      thunkApi.dispatch(getVideoDetails(videoIDs.toString()));
       return data;
     } catch (err) {
       thunkApi.rejectWithValue(new Error(JSON.stringify(err)));
@@ -27,12 +37,11 @@ export const searchInYoutube = createAsyncThunk(
   }
 );
 const youtubeSearchSlice = createSlice({
-  name: "youtubeSearchResults",
+  name: "youtubeSearch/",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(searchInYoutube.fulfilled, (state, action) => {
-      console.log(action.payload);
       state.loading = "idle";
       if (!action.payload) {
         state.errorMessage = "failed";
