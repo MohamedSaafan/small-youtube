@@ -1,5 +1,6 @@
 import { useAppSelector } from "../../../../app/hooks";
 import { renderBigNumbers } from "../../../../helpers/numbers";
+import { highlighKeyWord } from "../../../../helpers/text";
 import {
   isNew,
   renderDurationPassed,
@@ -9,6 +10,7 @@ import Styles from "./video.module.scss";
 
 const Video: React.FC<YoutubeItem> = (props) => {
   const videos = useAppSelector((state) => state.videosDetails.data);
+  const searchKeyWord = useAppSelector((state) => state.searchbar);
   const video = videos.find((item) => {
     if (props.id.kind === "youtube#video") return item.id === props.id.videoId;
   });
@@ -49,7 +51,9 @@ const Video: React.FC<YoutubeItem> = (props) => {
         </div>
         <p
           className={Styles.video__description}
-          dangerouslySetInnerHTML={{ __html: props.snippet.description }}
+          dangerouslySetInnerHTML={{
+            __html: highlighKeyWord(props.snippet.description, searchKeyWord),
+          }}
         ></p>
         <div className={Styles.video__options}>
           {hasCaption === "true" ? (

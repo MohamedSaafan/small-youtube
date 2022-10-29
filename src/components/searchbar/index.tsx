@@ -1,6 +1,6 @@
 import "./searchbar.scss";
 import searchIcon from "../../images/search.webp";
-import React, { FormEvent } from "react";
+import React, { FormEvent, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { changeSearchBar } from "../../features/searchbar/searchBarSlice";
 import { searchInYoutube } from "../../features/youtube-search/youtubeSearchSlice";
@@ -8,20 +8,21 @@ interface Props {}
 
 const SearchBar: React.FC<Props> = (props) => {
   const dispatch = useAppDispatch();
-  const searchKeyWord = useAppSelector((state) => state.searchbar);
-  const state = useAppSelector((state) => state);
-  console.log(state);
+  const [searchKeyWord, setSearchKeyWord] = useState("");
 
   const handleSubmition = (e: React.FormEvent<HTMLFormElement>) => {
     console.log("submited");
     e.preventDefault();
+    // put the search keyword in the store
+    dispatch(changeSearchBar(searchKeyWord));
+    // make the actual search
     dispatch(searchInYoutube(searchKeyWord));
     console.log("after submittion");
   };
   const handleSearchKeyWordChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
-    dispatch(changeSearchBar(e.target.value));
+    setSearchKeyWord(e.target.value);
   };
 
   return (
