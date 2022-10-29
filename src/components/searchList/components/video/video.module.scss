@@ -27,6 +27,10 @@
 
   &__details {
   }
+  &__header {
+    display: flex;
+    align-items: center;
+  }
 
   &__heading {
     font-size: 1.2rem;
@@ -40,10 +44,14 @@
   }
 
   &__description {
+    color: #9f9f9f;
     text-overflow: ellipsis;
     width: 100%;
     margin-top: 1rem;
-    display: inline-block;
+
+    b {
+      color: #000;
+    }
   }
 
   &__options {

@@ -32,6 +32,7 @@ const SearchBar: React.FC<Props> = (props) => {
         className="searchbar__input"
         value={searchKeyWord}
         onChange={handleSearchKeyWordChange}
+        autoFocus
       />
       <button type="submit" className="searchbar__icon">
         <img src={searchIcon} alt="search Icon" />

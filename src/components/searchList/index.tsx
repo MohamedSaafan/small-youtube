@@ -1,5 +1,6 @@
 import { useAppSelector } from "../../app/hooks";
 import Spinner from "../spinner";
+import Header from "./components/header";
 import Video from "./components/video";
 import "./searchlist.scss";
 interface Props {}
@@ -13,6 +14,7 @@ const SearchList: React.FC<Props> = (props) => {
   if (searchItems) {
     return (
       <div className="outer-container searchlist-container">
+        <Header />
         <section className="searchlist container">
           {searchItems.map((item) => {
             if (item.id.kind === "youtube#video")

@@ -36,3 +36,21 @@
   border-radius: 50%;
   background-color: var(--color-gray-800);
 }
+.heading-live-dot {
+  margin-right: 0.5rem;
+  transform: translateY(-30%);
+  background-color: #ac1815;
+  width: 13px;
+  height: 13px;
+  display: inline-block;
+  border-radius: 50%;
+}
+.description-live-dot {
+  margin-right: 0.5rem;
+  transform: translateY(-30%);
+  background-color: #c7736e;
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  border-radius: 50%;
+}

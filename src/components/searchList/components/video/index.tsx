@@ -21,6 +21,12 @@ const Video: React.FC<YoutubeItem> = (props) => {
   const isLive = props.snippet.liveBroadcastContent === "live";
   const hasCaption = video?.contentDetails.caption;
   const isRecent = isNew(props.snippet.publishTime);
+  const description = isLive
+    ? `Live: <span class="description-live-dot"></span>${highlighKeyWord(
+        props.snippet.description,
+        searchKeyWord
+      )}`
+    : highlighKeyWord(props.snippet.description, searchKeyWord);
 
   return (
     <article className={Styles.video}>
@@ -32,7 +38,8 @@ const Video: React.FC<YoutubeItem> = (props) => {
         <div className={Styles.video__image__duration}>{videoDuration}</div>
       </div>
       <div className={Styles.video__details}>
-        <div className="">
+        <div className={Styles.video__header}>
+          {isLive && <span className="heading-live-dot"></span>}
           <h2
             className={Styles.video__heading}
             dangerouslySetInnerHTML={{ __html: props.snippet.title }}
@@ -49,12 +56,14 @@ const Video: React.FC<YoutubeItem> = (props) => {
             {renderDurationPassed(props.snippet.publishedAt)}
           </span>
         </div>
+
         <p
           className={Styles.video__description}
           dangerouslySetInnerHTML={{
-            __html: highlighKeyWord(props.snippet.description, searchKeyWord),
+            __html: description,
           }}
         ></p>
+
         <div className={Styles.video__options}>
           {hasCaption === "true" ? (
             <span className={Styles.video__options__option}>CC</span>

@@ -1,0 +1,19 @@
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--color-gray-200);
+  padding-bottom: 0.8rem;
+  color: var(--color-gray-800);
+  &__heading {
+    font-size: 1.3rem;
+  }
+  &__btn {
+    border: none;
+    outline: none;
+    font-size: 1.3rem;
+    background-color: transparent;
+    color: var(--color-gray-800);
+  }
+}
