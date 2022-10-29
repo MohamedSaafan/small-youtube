@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { buildSearchURL } from "./api/queries";
 import Spinner from "./components/spinner";
 import NavBar from "./components/navbar";
+import SearchList from "./components/searchList";
 
 function App() {
   const url = buildSearchURL("funny channels");
@@ -16,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <Spinner />
+      <SearchList />
     </div>
   );
 }
