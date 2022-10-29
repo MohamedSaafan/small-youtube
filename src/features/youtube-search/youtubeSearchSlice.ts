@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { api, buildSearchURL } from "../../api/queries";
+import { api } from "../../api";
+import { buildSearchURL } from "../../api/urlBuilder";
 interface searchState {
   data: null | YoutubeSearchResult;
   loading: "idle" | "pending" | "succeeded" | "failed";
