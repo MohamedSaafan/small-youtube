@@ -17,6 +17,7 @@
       max-height: 4rem;
       justify-content: space-between;
       position: static;
+      transform: translateX(0);
     }
     &__searchbar {
       flex-grow: 2;
