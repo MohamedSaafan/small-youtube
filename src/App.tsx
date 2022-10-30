@@ -1,17 +1,16 @@
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { buildSearchURL } from "./api/urlBuilder";
+import { useAppDispatch } from "./app/hooks";
 import NavBar from "./components/navbar";
 import SearchList from "./components/searchList";
+import { searchInYoutube } from "./features/youtube-search/youtubeSearchSlice";
 
 function App() {
-  const url = buildSearchURL("funny channels");
-  const [respone, setResponse] = useState("");
-  console.log(moment().diff("2020-05-22T16:24:20Z", "months"));
+  const dispatch = useAppDispatch();
   useEffect(() => {
-    // fetch(url)
-    //   .then((res) => res.json())
-    //   .then(console.log);
+    // fill in the store at the first to avoid rendering a blank search result
+    dispatch(searchInYoutube(""));
   }, []);
 
   return (

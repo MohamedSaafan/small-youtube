@@ -17,7 +17,8 @@
   &__logo {
     &-desktop {
       position: relative;
-      max-width: 5rem;
+      width: 5rem;
+      min-width: 5rem;
       img {
         max-width: 100%;
       }
@@ -34,9 +35,15 @@
       }
     }
     &-mobile {
-      width: 2rem;
-      img {
-        width: 100%;
+      display: none;
+      @include mobile {
+        & {
+          width: 2rem;
+          display: block;
+          img {
+            width: 100%;
+          }
+        }
       }
     }
   }
