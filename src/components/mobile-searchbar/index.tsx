@@ -8,8 +8,9 @@ interface Props {}
 
 const MobileSearchBar: React.FC<Props> = (props) => {
   const dispatch = useAppDispatch();
-  const [searchKeyWord, setSearchKeyWord] = useState("keyword");
+  const [searchKeyWord, setSearchKeyWord] = useState("");
   const [shouldDisplayInput, setShouldDisplayInput] = useState(false);
+  const globalSearchKeyWord = useAppSelector((state) => state.searchbar);
 
   const handleSubmition = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -34,7 +35,7 @@ const MobileSearchBar: React.FC<Props> = (props) => {
       {shouldDisplayInput ? (
         ""
       ) : (
-        <h1 className="searchbar__searchkeyword">{searchKeyWord}</h1>
+        <h1 className="searchbar__searchkeyword">{globalSearchKeyWord}</h1>
       )}
       <input
         type="search"
