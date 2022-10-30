@@ -1,9 +1,11 @@
 import "./searchbar.scss";
-import searchIcon from "../../images/search.webp";
-import React, { FormEvent, useState } from "react";
+
+import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { changeSearchBar } from "../../features/searchbar/searchBarSlice";
 import { searchInYoutube } from "../../features/youtube-search/youtubeSearchSlice";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 interface Props {}
 
 const SearchBar: React.FC<Props> = (props) => {
@@ -35,7 +37,7 @@ const SearchBar: React.FC<Props> = (props) => {
         autoFocus
       />
       <button type="submit" className="searchbar__icon">
-        <img src={searchIcon} alt="search Icon" />
+        <FontAwesomeIcon icon={faSearch} />
       </button>
     </form>
   );

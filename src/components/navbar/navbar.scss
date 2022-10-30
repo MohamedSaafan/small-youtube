@@ -1,25 +1,52 @@
+@use "../../sass/mixins.scss" as *;
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
   max-height: 3rem;
+  @include mobile {
+    & {
+      background-color: var(--color-primary);
+      padding: 0.5rem;
+      max-height: 4rem;
+      justify-content: space-between;
+    }
+  }
 
   margin: 2rem auto;
   &__logo {
-    position: relative;
-    max-width: 5rem;
-    img {
-      max-width: 100%;
+    &-desktop {
+      position: relative;
+      max-width: 5rem;
+      img {
+        max-width: 100%;
+      }
+      span {
+        position: absolute;
+        top: -0.4rem;
+        right: -1.2rem;
+        font-size: 0.8rem;
+      }
+      @include mobile {
+        & {
+          display: none;
+        }
+      }
     }
-    span {
-      position: absolute;
-      top: -0.4rem;
-      right: -1.2rem;
-      font-size: 0.8rem;
+    &-mobile {
+      width: 2rem;
+      img {
+        width: 100%;
+      }
     }
   }
 }
 
 header.header {
   margin: 2rem auto;
+  @include mobile {
+    & {
+      margin: 0.5rem auto;
+    }
+  }
 }

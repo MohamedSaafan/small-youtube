@@ -25,6 +25,6 @@ const SearchList: React.FC<Props> = (props) => {
       </div>
     );
   }
-  return <div>Search Items</div>;
+  return <div></div>;
 };
 export default SearchList;

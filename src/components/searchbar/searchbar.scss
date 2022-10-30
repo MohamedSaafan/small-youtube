@@ -1,9 +1,16 @@
+@use "../../sass/mixins.scss" as *;
 .searchbar {
   display: flex;
   margin-left: 20vw;
   border: 1px solid var(--color-gray-200);
   border-radius: 0.25rem;
-
+  @include mobile {
+    & {
+      border-right: none;
+      margin: 0;
+      border: none;
+    }
+  }
   &__input {
     width: 20rem;
     height: 2rem;
@@ -11,6 +18,13 @@
     padding: 0 0.5rem;
     border: none;
     border-radius: 0.25rem;
+    @include mobile {
+      & {
+        width: 60vw;
+        border-radius: 2px;
+        border: none;
+      }
+    }
   }
 
   &__icon {
@@ -24,10 +38,19 @@
     justify-content: center;
     align-items: center;
     background-color: var(--color-gray-500);
+    @include mobile {
+      & {
+        color: #fff;
+        font-size: 1.5rem;
+        margin-right: 0.5rem;
+      }
+    }
 
-    img {
-      max-width: 100%;
-      width: 2rem;
+    @include mobile {
+      & {
+        background-color: transparent;
+        padding-right: 0;
+      }
     }
   }
 }

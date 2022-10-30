@@ -1,16 +1,17 @@
+@use "../../../../sass/mixins.scss" as *;
 .video {
   display: flex;
   padding-top: 1rem;
   overflow: hidden;
   &__image {
-    min-width: 16rem;
+    width: 16rem;
     position: relative;
     margin-right: 1rem;
 
     img {
       width: 100%;
       max-width: 16rem;
-      object-fit: contain;
+      object-fit: cover;
     }
 
     &__duration {
@@ -22,6 +23,12 @@
       padding: 0.1rem 0.25rem;
       border-radius: 3px;
       font-size: 0.9rem;
+    }
+    @include mobile {
+      & {
+        min-width: 50%;
+        max-width: 50%;
+      }
     }
   }
 
@@ -35,12 +42,18 @@
   &__heading {
     font-size: 1.2rem;
     margin-bottom: 0.25rem;
+    @include mobile {
+      & {
+        font-size: 1rem;
+      }
+    }
   }
 
   &__statistics {
     display: flex;
     font-size: 0.9rem;
     color: var(--color-gray-800);
+    flex-wrap: wrap;
   }
 
   &__description {
@@ -51,6 +64,11 @@
 
     b {
       color: #000;
+    }
+    @include mobile {
+      & {
+        display: none;
+      }
     }
   }
 

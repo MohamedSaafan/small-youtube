@@ -8,15 +8,28 @@
   --color-gray-200: #dedede;
   --color-gray-500: #f8f8f8;
   --color-gray-800: #989898;
+  --color-primary: #9a0100;
 }
 
 .container {
   width: 80vw;
   margin: auto;
 }
+@media only screen and (max-width: 567px) {
+  .container {
+    width: 95vw;
+    overflow: hidden;
+  }
+}
 .outer-container {
-  width: 90vw;
+  width: 97vw;
   margin: auto;
+}
+@media screen and(max-width: 768px ) {
+  .outer-container {
+    width: 100vw;
+    overflow: hidden;
+  }
 }
 .outer-container.searchlist-container {
   background-color: var(--color-gray-500);
@@ -53,4 +66,8 @@
   height: 7px;
   display: inline-block;
   border-radius: 50%;
+}
+.App {
+  width: 100vw;
+  overflow: hidden;
 }
