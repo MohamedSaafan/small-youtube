@@ -1,5 +1,3 @@
-import { type } from "os";
-import { isArray } from "util";
 import { YOUTUBE_API_KEY } from "../keys";
 const baseUrl = "https://youtube.googleapis.com/youtube";
 
